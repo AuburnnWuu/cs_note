@@ -68,5 +68,5 @@ It's ordered(**Sorted**Set), elements unrepeatable, fast searching.(often used t
 - ZINCRBY key increment member：让sorted set中的指定元素自增，步长为指定的increment值
 - ZRANGE key min max：按照score排序后，获取指定排名范围内的元素
 - ZRANGEBYSCORE key min max：按照score排序后，获取指定score范围内的元素
-- ZDIFF、ZINTER、ZUNION：求差集、交集、并集
+- ZDIFF、ZINTER、ZUNION：求差集、交集、并集.
 PS：所有的排名默认都是升序，如果要降序则在命令的Z后面添加REV即可
