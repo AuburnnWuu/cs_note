@@ -70,3 +70,30 @@ It's ordered(**Sorted**Set), elements unrepeatable, fast searching.(often used t
 - ZRANGEBYSCORE key min max：按照score排序后，获取指定score范围内的元素
 - ZDIFF、ZINTER、ZUNION：求差集、交集、并集.
 PS：所有的排名默认都是升序，如果要降序则在命令的Z后面添加REV即可
+
+
+### RedisSerializer
+
+**1.**
+key - StringRedisSerializer
+value - GenericJackson2JsonRedisSerializer
+
+```java
+@Bean
+public RedisTemplate<String, 0bject> redisTemplate(RedisConnectionFactory redisConnectionFactory)throws UnknownHostException {
+// 创建TemplateRedisTemplate<String，Object> redisTemplate = new RedisTemplate<>();
+//设置连接工厂
+redisTemplate.setConnectionFactory(redisConnectionFactory);
+//设置序列化工具
+GenericJackson2JsonRedisSerializerjsonRedisSerializer=
+new GenericJackson2JsonRedisSerializer();
+//key和hashKey采用string序列化
+redisTemplate.setKeySerializer(RedisSerializer.string());redisTemplate.setHashKeySerializer(RedisSerializer.string());
+//value和 hashValue采用JSON序列化
+redisTemplate.setValueSerializer(jsonRedisSerializer);
+redisTemplate.setHashVatueSerializer(jsonRedisSerializer);
+return redisTemplate:}
+```
+**2.**
+StringRedisTemplate:
+It's default serialization method is string.
